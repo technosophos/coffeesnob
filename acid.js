@@ -17,9 +17,9 @@ events.push = function(e) {
   slack.env = {
     SLACK_WEBHOOK: project.secrets.SLACK_WEBHOOK,
     SLACK_USERNAME: "AcidBot",
-    SLACK_MESSAGE: "Build " + e.payload.status
+    SLACK_MESSAGE: "Build complete"
   }
   slack.tasks = ["/slack-notify"]
-  
+
   slack.run()
 }
