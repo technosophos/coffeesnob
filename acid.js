@@ -9,4 +9,17 @@ events.push = function(e) {
   ]
 
   test.run()
+
+  // Send a notification on Slack if the build fails.
+  var slack = new Job("slack-notify")
+
+  slack.image = "technosophos/slack-notify:latest"
+  slack.env = {
+    SLACK_WEBHOOK: project.secrets.SLACK_WEBHOOK,
+    SLACK_USERNAME: "AcidBot",
+    SLACK_MESSAGE: "Build " + e.payload.status
+  }
+  slack.tasks = ["/slack-notify"]
+  
+  slack.run()
 }
