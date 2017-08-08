@@ -10,7 +10,7 @@ events.push = function(e) {
 
   test.run()
 
-  // Send a notification on Slack if the build fails.
+  // Send a notification on Slack.
   var slack = new Job("slack-notify")
 
   slack.image = "technosophos/slack-notify:latest"
