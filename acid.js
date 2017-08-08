@@ -1,5 +1,6 @@
 events.push = function(e) {
   var test = new Job("nodejs-test")
+  var slack = new Job("slack-notify")
 
   test.image = "node:latest"
   test.tasks = [
@@ -7,11 +8,6 @@ events.push = function(e) {
     "npm install",
     "npm test"
   ]
-
-  test.run()
-
-  // Send a notification on Slack.
-  var slack = new Job("slack-notify")
 
   slack.image = "technosophos/slack-notify:latest"
   slack.env = {
@@ -21,5 +17,6 @@ events.push = function(e) {
   }
   slack.tasks = ["/slack-notify"]
 
+  test.run()
   slack.run()
 }
