@@ -3,6 +3,7 @@ events.push = function(e) {
 
   test.image = "node:latest"
   test.tasks = [
+    "cd src/",
     "npm install",
     "npm test"
   ]
